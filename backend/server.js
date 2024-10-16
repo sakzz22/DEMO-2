@@ -37,13 +37,14 @@ app.use("/api/messages",messageRoutes);
 // 		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 // 	});
 // }
+// 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "frontend", "dist")));
+	app.use(express.static(path.join(__dirname, "frontend","dist")));
 
-  // Serve index.html for all routes
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
+	// react app
+	app.get("*", (req, res) => {
+		res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+	});
 }
 
 server.listen(5000 ,() => console.log(`start at ${PORT}`)
